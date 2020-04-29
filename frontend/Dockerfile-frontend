@@ -1,0 +1,7 @@
+FROM node:14.0.0-buster-slim
+
+WORKDIR /opt/frontend
+
+COPY package.json /opt/frontend
+
+RUN npm install
