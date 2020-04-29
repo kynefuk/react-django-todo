@@ -1,4 +1,6 @@
 venv
 config/__pycache__
+todos/__pycache__
+todos/migrations/__pycache__
 db.sqlite3
 frontend/node_modules
