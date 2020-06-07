@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ListGroupItem, Form, Row, Col, Button } from 'react-bootstrap';
 import { Todo } from '../model/Todo';
 import { AppContext } from '../context/AppContext';
@@ -23,6 +23,13 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
     });
   };
 
+  const labelMessage = () => {
+    if (todo.props.done) {
+      return '完了済み';
+    }
+    return '未完了';
+  };
+
   const onDelete = async () => {
     const api = new API();
     await api.deleteTodo(todo.props.id);
@@ -39,7 +46,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
           <Form.Group controlId='formBasicCheckbox'>
             <Form.Check
               type='checkbox'
-              label='完了済み'
+              label={labelMessage()}
               checked={todo.props.done}
               onChange={changeDone}
             />

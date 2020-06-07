@@ -19,6 +19,7 @@ export const TodoForm = () => {
       type: TodoActionType.ADD,
       payload: [todo],
     });
+    setTitle('');
   };
 
   return (

@@ -9,9 +9,11 @@ export const TodoList: React.FC = () => {
 
   return (
     <ListGroup>
-      {state.todos.map((todo) => (
-        <TodoItem key={todo.props.id} todo={todo} />
-      ))}
+      {state.todos.length > 0 ? (
+        state.todos.map((todo) => <TodoItem key={todo.props.id} todo={todo} />)
+      ) : (
+        <p className='mt-5'>Todoはありません。</p>
+      )}
     </ListGroup>
   );
 };

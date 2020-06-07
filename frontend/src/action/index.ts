@@ -5,7 +5,6 @@ export enum TodoActionType {
   ADD = 'ADD',
   UPDATE = 'UPDATE',
   DELETE = 'DELETE',
-  DONE = 'DONE',
 }
 
 export interface TodoAction {

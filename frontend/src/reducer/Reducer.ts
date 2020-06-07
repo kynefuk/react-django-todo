@@ -26,14 +26,10 @@ export const TodoReducer: React.Reducer<TodoState, TodoAction> = (
       // APIコール
       return { ...state };
     case TodoActionType.DELETE:
-      console.log(action.payload![0]);
       const deleted = state.todos.filter(
         (todo) => todo.props.id !== action.payload![0].props.id
       );
       state.todos = deleted;
-      return { ...state };
-    case TodoActionType.DONE:
-      //APIコール
       return { ...state };
     default:
       const _: never = action.type;
