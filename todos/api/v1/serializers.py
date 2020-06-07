@@ -6,7 +6,8 @@ from todos.models import Todo
 class TodoCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
-        exclude = ["id"]
+        fields = "__all__"
+        extra_kwargs = {"id": {"read_only": True}}
 
 
 class TodoSerializer(serializers.ModelSerializer):

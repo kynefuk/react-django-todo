@@ -1,27 +1,17 @@
-import React from "react";
-import { ListGroup } from "react-bootstrap";
+import React, { useContext } from 'react';
+import { ListGroup } from 'react-bootstrap';
 
-import TodoForm from "./TodoForm";
-import TodoItem from "./TodoItem";
-import Todo from "../model/Todo";
+import TodoItem from './TodoItem';
+import { AppContext } from '../context/AppContext';
 
-interface TodoListProps {
-  todos: Todo[];
-  changeDone: () => void;
-  addTodo: (title: string) => void;
-}
+export const TodoList: React.FC = () => {
+  const { state, dispatch } = useContext(AppContext);
 
-const TodoList: React.FC<TodoListProps> = ({ todos, changeDone, addTodo }) => {
   return (
-    <>
-      <TodoForm addTodo={addTodo} />
-      <ListGroup>
-        {todos.map((todo) => {
-          <TodoItem todo={todo} changeDone={changeDone} />;
-        })}
-      </ListGroup>
-    </>
+    <ListGroup>
+      {state.todos.map((todo) => (
+        <TodoItem key={todo.props.id} todo={todo} />
+      ))}
+    </ListGroup>
   );
 };
-
-export default TodoList;

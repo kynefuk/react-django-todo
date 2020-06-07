@@ -1,11 +1,21 @@
-export default class Todo {
-  uuid: string;
+interface TodoProps {
+  id: string;
   title: string;
   done: boolean;
+}
 
-  constructor(uuid: string, title: string, done: boolean) {
-    this.uuid = uuid;
-    this.title = title;
-    this.done = done;
+const DefaultTodoProps = {
+  id: '',
+  title: '',
+  done: false,
+};
+
+export class Todo {
+  props: TodoProps;
+  constructor(optionProps?: TodoProps) {
+    this.props = {
+      ...DefaultTodoProps,
+      ...optionProps,
+    };
   }
 }

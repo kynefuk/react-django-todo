@@ -3,5 +3,10 @@ FROM python:3.8-slim
 ENV PYTHONUNBUFFERED 1
 WORKDIR /opt/backend
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+     && apt-get install -y git \
+	&& apt-get clean \
+     && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+
 COPY requirements.txt /opt/backend
 RUN pip install -r requirements.txt
